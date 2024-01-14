@@ -5,7 +5,7 @@ export class CompactRecord {
   id;
   name;
   band;
-  release_year;
+  releaseYear;
   genre;
   price;
 
@@ -13,21 +13,21 @@ export class CompactRecord {
     this.id = obj.id;
     this.name = obj.name;
     this.band = obj.band;
-    this.release_year = obj.release_year;
+    this.releaseYear = obj.releaseYear;
     this.genre = obj.genre;
     this.price = obj.price;
   }
 
   static async getOne(id) {
-    const [results] = await pool.execute("SELECT * FROM `cds` WHERE id = :id", {
+    const [results] = await pool.execute("SELECT `id`, `name`, `band`, `release_year` as `releaseYear`, `genre`, `price` FROM `cds` WHERE id = :id", {
       id,
     });
 
     return results.length === 0 ? null : new CompactRecord(results[0]);
   }
 
-  static async findAll(name) {
-    const [results] = await pool.execute("SELECT * FROM `cds` WHERE `name` LIKE :search", {
+  static async findAll(name, sortingMethod) {
+    const [results] = await pool.execute("SELECT `id`, `name`, `band`, `release_year` as `releaseYear`, `genre`, `price` FROM `cds` WHERE `name` LIKE :search ORDER BY " + sortingMethod.parameter + ' ' + sortingMethod.direction, {
       search: `%${name}%`,
     });
 
@@ -38,7 +38,7 @@ export class CompactRecord {
 
   async insert() {
     this.id = uuid();
-    const [added] = await pool.execute("INSERT INTO `cds` (`id`, `name`, `band`, `release_year`, `genre`, `price`) VALUES (:id, :name, :band, :release_year, :genre, :price)", this);
+    const [added] = await pool.execute("INSERT INTO `cds` (`id`, `name`, `band`, `release_year`, `genre`, `price`) VALUES (:id, :name, :band, :releaseYear, :genre, :price)", this);
   }
 
   async delete() {
@@ -48,7 +48,7 @@ export class CompactRecord {
   }
 
   async update() {
-    const [result] = await pool.execute("UPDATE `cds` SET `name` = :name, `band` = :band, `release_year` = :release_year, `genre` = :genre, `price` = :price WHERE `id` = :id", this);
+    const [result] = await pool.execute("UPDATE `cds` SET `name` = :name, `band` = :band, `release_year` = :releaseYear, `genre` = :genre, `price` = :price WHERE `id` = :id", this);
     return result;
   }
 }
