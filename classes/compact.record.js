@@ -1,3 +1,5 @@
+import {pool} from "../utils/db";
+
 export class CompactRecord {
   id;
   name;
@@ -13,5 +15,13 @@ export class CompactRecord {
     this.year = obj.year;
     this.genre = obj.genre;
     this.price = obj.price;
+  }
+
+  static async getOne(id) {
+    const [results] = await pool.execute("SELECT * FROM `compacts` where id = :id", {
+      id,
+    });
+
+    return results.length === 0 ? null : new CompactRecord(results[0]);
   }
 }
