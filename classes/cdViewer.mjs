@@ -32,7 +32,7 @@ export class CDViewer {
     this.clearScreen();
 
     // Wyświetl nagłówki tabeli
-    console.log('| ID                                    | Name               | Band               | Release Year | Genre               | Price   |');
+    console.log('| ID                                    | Nazwa              | Zespół             | Data wydania | Gatunek             | Cena    |');
     console.log('|---------------------------------------|--------------------|--------------------|--------------|---------------------|---------|');
 
     // Wyświetl dane każdego rekordu w formie tabeli
