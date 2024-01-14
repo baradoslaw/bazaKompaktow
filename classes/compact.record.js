@@ -18,10 +18,20 @@ export class CompactRecord {
   }
 
   static async getOne(id) {
-    const [results] = await pool.execute("SELECT * FROM `compacts` where id = :id", {
+    const [results] = await pool.execute("SELECT * FROM `compacts` WHERE id = :id", {
       id,
     });
 
     return results.length === 0 ? null : new CompactRecord(results[0]);
+  }
+
+  static async findAll(name) {
+    const [results] = await pool.execute("SELECT * FROM `compacts` WHERE `name` LIKE :search", {
+      search: `%${name}%`,
+    });
+
+    return results.map(obj => {
+      return new CompactRecord(obj);
+    });
   }
 }
