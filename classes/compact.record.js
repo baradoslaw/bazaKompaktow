@@ -1,4 +1,5 @@
 import {pool} from "../utils/db";
+import uuid from "uuid";
 
 export class CompactRecord {
   id;
@@ -33,5 +34,12 @@ export class CompactRecord {
     return results.map(obj => {
       return new CompactRecord(obj);
     });
+  }
+
+  async insert() {
+    this.id = uuid();
+    const [added] = await pool.execute("INSERT INTO `compacts`(`id`, `name`, `band`, `year`, `genre`, `price`) VALUES (:id, :name, :band, :year, :genre, :price)", this);
+
+    console.log(added);
   }
 }
