@@ -1,0 +1,19 @@
+{
+  "name": "kompakty",
+  "version": "0.0.1",
+  "description": "Aplikacja zarządzająca kolekcją kompaktów",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baradoslaw/bazaKompaktow.git"
+  },
+  "author": "Radosław Baran, Kacper Krański",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baradoslaw/bazaKompaktow/issues"
+  },
+  "homepage": "https://github.com/baradoslaw/bazaKompaktow#readme"
+}
