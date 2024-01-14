@@ -4,7 +4,7 @@
   "description": "Aplikacja zarządzająca kolekcją kompaktów",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/baradoslaw/bazaKompaktow/issues"
   },
-  "homepage": "https://github.com/baradoslaw/bazaKompaktow#readme"
+  "homepage": "https://github.com/baradoslaw/bazaKompaktow#readme",
+  "dependencies": {
+    "mysql2": "^3.7.0",
+    "uuid": "^9.0.1"
+  }
 }
