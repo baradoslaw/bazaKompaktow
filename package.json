@@ -2,9 +2,9 @@
   "name": "kompakty",
   "version": "0.0.1",
   "description": "Aplikacja zarządzająca kolekcją kompaktów",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.mjs"
   },
   "repository": {
     "type": "git",
