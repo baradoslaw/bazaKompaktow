@@ -1,6 +1,6 @@
 {
   "name": "kompakty",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Aplikacja zarządzająca kolekcją kompaktów",
   "main": "index.mjs",
   "scripts": {
