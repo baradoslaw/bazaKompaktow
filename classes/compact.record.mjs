@@ -39,13 +39,16 @@ export class CompactRecord {
   async insert() {
     this.id = uuid();
     const [added] = await pool.execute("INSERT INTO `cds` (`id`, `name`, `band`, `release_year`, `genre`, `price`) VALUES (:id, :name, :band, :release_year, :genre, :price)", this);
-
-    console.log(added);
   }
 
   async delete() {
     await pool.execute("DELETE FROM `cds` WHERE `id` = :id", {
       id: this.id,
     });
+  }
+
+  async update() {
+    const [result] = await pool.execute("UPDATE `cds` SET `name` = :name, `band` = :band, `release_year` = :release_year, `genre` = :genre, `price` = :price WHERE `id` = :id", this);
+    return result;
   }
 }
